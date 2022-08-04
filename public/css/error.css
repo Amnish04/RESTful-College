@@ -24,10 +24,14 @@ a {
 }
 
 .super-savage {
+    display: inline-block;
     font-size: 2em;
-    display: block;
     transform: rotate(90deg);
     cursor: grab;
+    border: 5px solid red;
+    border-radius: 50%;
+    padding: 0 0.1em;
+    padding-bottom: 0.20em;
 }
 
 .super-savage:hover {
