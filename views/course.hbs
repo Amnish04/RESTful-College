@@ -3,22 +3,39 @@
         <br>
         <h2>{{course.courseDescription}}</h2>
         <hr />
-        <form>
+        <form method="post" action="/course/update">
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <label for="courseCode">Course Code</label>
-                        <input class="form-control" id="courseCode" name="courseCode" type="text" readonly value="{{course.courseCode}}" />
+                        <input class="form-control" id="courseCode" name="courseCode" type="text" value="{{course.courseCode}}" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" hidden>
+                        <label for="courseCode">Course Code</label>
+                        <input class="form-control" id="courseCode" name="courseCode" type="text" value="{{course.courseCode}}" />
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div class="form-group">
                         <label for="courseDescription">Course Description</label>
-                        <input class="form-control" id="courseDescription" name="courseDescription" type="text" readonly value="{{course.courseDescription}}" />
+                        <input required class="form-control" id="courseDescription" name="courseDescription" type="text" value="{{course.courseDescription}}" />
                     </div>
                 </div>
             </div>
             <hr />
+            
+            <div class="d-flex justify-content-center mb-2">
+                <input type="submit" class="btn btn-dark float-right" value="Update Course" /><br /><br /><br />
+                <input type="reset" class="btn btn-dark float-right mx-5" value="Reset" /><br /><br /><br />
+            </div>
+
+            {{#if error}}
+                <div class="alert alert-danger">
+                    <strong>{{error}}</strong>
+                </div>
+            {{/if}}
         </form>
     </div>
 </div>

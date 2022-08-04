@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    background-image: url(../Images/backImage.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.container {
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    color: gold;
+    text-align: center;
+}
+h1 .savage {
+    color: red;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.super-savage {
+    font-size: 2em;
+    display: block;
+    transform: rotate(90deg);
+    cursor: grab;
+}
+
+.super-savage:hover {
+    font-size: 2.5em;
+    transition: 0.25s;
+    transform: rotate(75deg);
+}
+
+.super-savage:active {
+    cursor: grabbing;
+}
+
+.super-savage:hover::after {
+    content: "()";
+}
+.super-savage::after {
+    content: "}";
+}

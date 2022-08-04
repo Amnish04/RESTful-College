@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap');
+
+:root {
+    --background-gradient: linear-gradient(90deg, lightgrey, white, lightgrey);
+    --font1: 'Roboto Condensed', sans-serif;
+    --font2: 'Arima', 'Times New Roman', Times, serif, cursive;
+    --font3: 'Alegreya Sans', sans-serif;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: lemonchiffon;
+    color: black;
+    border-radius: 20%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+    font-weight: 1000;
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header p {
+    text-align: center;
+}
+
+/* Navbar */
+nav.navbar {
+    background-color: rgba(20,20,20);
+}
+
+a.navbar-brand {
+    color: gold;
+    transition: 200ms ease-in-out;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+}
+
+a.navbar-brand:hover,
+a.navbar-brand:focus {
+    color: white;
+    transform: rotate(-5deg) scale(1.025);
+    transition: 100ms ease-in-out;
+}
+
+a.nav-link {
+    position: relative;
+    font-family: 'Cormorant', serif;
+    font-size: 1.5em;;
+    color: white;
+}
+
+.navbar-nav a {
+    outline-style: none;
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+a.nav-link:hover,
+a.nav-link:focus {
+    color: black;
+    border-radius: 10%;
+    z-index: 1;
+}
+
+a.nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    z-index: -1;
+    transform: scaleX(0);
+    transition: 250ms ease-in-out;
+    border-radius: 10%;
+}
+
+a.nav-link:hover::before,
+a.nav-link:focus::before {
+    transform: scaleX(1);
+}
+
+/* Main Body */
+body {
+    margin: 0;
+    padding: 0;
+    /* Typography */
+    font-family: var(--font2);
+    font-size: 20px;
+    margin: auto;
+    background-image: var(--background-gradient);
+    min-height: 100vh;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.wrapper {
+    min-height: 80vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 85%;
+}
+
+.floating-image {
+    float: left;
+    width: 25%;
+    margin: 0 1em;
+}
+
+.first-letter {
+    font-weight: 1000;
+    font-size: x-large;
+}
+
+/* Footer Styling */
+footer {
+    background-color: black;
+    color: white;
+    border-top: 2px dashed white;
+    padding-bottom: 2em;
+    padding-top: 1em;
+}
+
+footer h3 {
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.75);
+}
+
+footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    transition: 200ms ease-in-out;
+}
+
+footer .links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer .link-column {
+    margin: 0 1.5em;
+}
+
+footer a:hover,
+footer a:active,
+footer a:focus {
+    color: gold;
+    text-shadow: -2px 2px 4px rgba(255,255,255, 0.75);
+    transform: translateY(-4px) scale(1.05);
+    outline-style: none;
+}
+
+/* Go to top button */
+.to-top-button {
+    position: fixed;
+    right: 10%;
+    bottom: 10%;
+    padding: 20px;
+    padding-top: 5px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 50%;
+    display: none;
+    transition: 300ms ease-in-out;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.to-top-button:hover,
+.to-top-button:focus {
+    color: gold;
+    border-radius: 20%;
+}
+
+.to-top-button:focus {
+    border: 1px solid white;
+}
+
+
+/* Bootstrap Class Customization */
+
+.btn {
+    transition: 100ms ease-in-out;
+}
+
+.btn[class *= "btn-dark"]:hover,
+.btn[class *= "btn-dark"]:focus {
+    color: gold;
+    transform: translateY(-2px);
+    box-shadow: -4px 2px 4px rgba(100, 100, 100, 0.5);
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.vertical-center {
+    vertical-align: middle;
+}

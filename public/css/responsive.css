@@ -1,0 +1,18 @@
+@media screen and (max-width: 1200px) {
+    a.nav-link:hover,
+    a.nav-link:focus {
+    color: black;
+    background-color: white;
+    border-radius: 10%;
+    z-index: 1;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .floating-image {
+        float: none;
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+    }
+}
