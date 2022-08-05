@@ -2,12 +2,12 @@ const Sequelize = require('sequelize');
 const Parser = require("./url-parser");
 const { urlParser } = Parser;
 
-// const credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
+const credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
 /* 
     IMPORTANT: The hard coded version is for testing locally. It may not work all the time as postgres chnages credentials from periodically. This is why I took the time 
                to implement a module that parses heroku config variables and creates a dynamic connection on runtime.
 */
-const credentials = urlParser.parseDatabaseUrl("postgres://ztnvxwguilmsrm:c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593@ec2-3-213-228-206.compute-1.amazonaws.com:5432/d5vp1lfqo0ooi1");
+// const credentials = urlParser.parseDatabaseUrl("postgres://ztnvxwguilmsrm:c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593@ec2-3-213-228-206.compute-1.amazonaws.com:5432/d5vp1lfqo0ooi1");
 const sequelize = new Sequelize(credentials.database, credentials.user, credentials.password, {
     host: credentials.host,
     dialect: 'postgres',
