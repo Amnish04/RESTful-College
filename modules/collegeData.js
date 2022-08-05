@@ -6,9 +6,12 @@ const { urlParser } = Parser;
     IMPORTANT: The hard coded version is for testing locally. It may not work all the time as postgres chnages credentials from periodically. This is why I took the time 
                to implement a module that parses heroku config variables and creates a dynamic connection on runtime.
 */
+let credentials; // This is unsafe
 try {
-    const credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
-    if (credentials === undefined) throw "Undefined Connection String";
+    if (!process.env.DATABASE_URL) {
+        throw "Invalid Connection String!";
+    }
+    credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
 }
 catch(err) {
     credentials = urlParser.parseDatabaseUrl("postgres://ztnvxwguilmsrm:c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593@ec2-3-213-228-206.compute-1.amazonaws.com:5432/d5vp1lfqo0ooi1");
