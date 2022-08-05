@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-import Parser from "./url-parser";
+const Parser = require("./url-parser");
 const { urlParser } = Parser;
 
 const credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
