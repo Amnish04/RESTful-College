@@ -1,9 +1,14 @@
 const Sequelize = require('sequelize');
+const Parser = require("./url-parser");
+const { urlParser } = Parser;
 
-const sequelize = new Sequelize('d5vp1lfqo0ooi1', 'ztnvxwguilmsrm', 'c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593', {
-    host: 'ec2-3-213-228-206.compute-1.amazonaws.com',
+const credentials = urlParser.parseDatabaseUrl(process.env.DATABASE_URL);
+// const credentials = urlParser.parseDatabaseUrl("postgres://ztnvxwguilmsrm:c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593@ec2-3-213-228-206.compute-1.amazonaws.com:5432/d5vp1lfqo0ooi1");
+console.log(credentials);
+const sequelize = new Sequelize(credentials.database, credentials.user, credentials.password, {
+    host: credentials.host,
     dialect: 'postgres',
-    port: 5432,
+    port: credentials.port,
     dialectOptions: {
     ssl: { rejectUnauthorized: false }
     },
