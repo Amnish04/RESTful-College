@@ -44,7 +44,7 @@ section {
 
 /* Navbar */
 nav.navbar {
-    background-color: rgba(20,20,20);
+    background-color: rgba(30, 30, 30);
 }
 
 a.navbar-brand {
@@ -278,4 +278,9 @@ audio {
 .card-content {
     height: 200px;
     overflow-y: auto;
+}
+
+/* For about page */
+.expand {
+    min-width: 300px;
 }
