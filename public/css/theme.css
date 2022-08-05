@@ -10,6 +10,7 @@
     --font1: 'Roboto Condensed', sans-serif;
     --font2: 'Arima', 'Times New Roman', Times, serif, cursive;
     --font3: 'Alegreya Sans', sans-serif;
+    --selection-color: rgb(200, 200, 200);
 }
 
 *, *::after, *::before {
@@ -17,7 +18,7 @@
 }
 
 ::selection {
-    background-color: lemonchiffon;
+    background-color: var(--selection-color);
     color: black;
     border-radius: 20%;
 }
@@ -35,6 +36,10 @@ html {
 
 header p {
     text-align: center;
+}
+
+section {
+    border-bottom: 1px solid lightgrey;
 }
 
 /* Navbar */
@@ -176,32 +181,39 @@ footer a:focus {
     outline-style: none;
 }
 
-/* Go to top button */
-.to-top-button {
+/* Navigation Controls */
+
+.page-navigator {
     position: fixed;
     right: 10%;
     bottom: 10%;
-    padding: 20px;
-    padding-top: 5px;
-    text-decoration: none;
-    color: white;
+}
+
+.nav-control-button {
+    display: block;
     background-color: black;
-    border-radius: 50%;
-    display: none;
-    transition: 300ms ease-in-out;
-    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: white;
+    transition: 200ms ease-in-out;
+    padding-left: 0.25em;
+}
+.top-button {
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
 }
 
-.to-top-button:hover,
-.to-top-button:focus {
+.bottom-button {
+    border-bottom-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    padding-bottom: 0.3em;
+}
+
+.nav-control-button:hover {
     color: gold;
-    border-radius: 20%;
 }
 
-.to-top-button:focus {
+.nav-control-button:active {
     border: 1px solid white;
 }
-
 
 /* Bootstrap Class Customization */
 
@@ -224,3 +236,35 @@ footer a:focus {
 .vertical-center {
     vertical-align: middle;
 }
+
+
+/* Multimedia CSS */
+.multimedia {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 00.25em;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+}
+
+figure * {
+    margin: 0.25em;
+}
+
+figcaption {
+    text-align: center;
+}
+
+audio, video {
+    margin: auto;
+    width: 50%;
+    max-width: 1000px;
+}
+
+audio {
+    border-radius: 1em;
+} 

@@ -1,14 +1,162 @@
 <div class="row">
 	<main class="col-md-12">
 
-
-
+        {{#if section}}
+            <a hidden id="scroll" href="#{{section}}"></a>
+        {{/if}}
 		<!-- Start your code here -->
+        <section id="top">
+            <h1><u>HTML Demo</u></h1>
+            <p class="text-center">Here, I will be demonstrating HTML5 principles and techniques!</p>
+        </section>
 
+        <section>
+            <h3>What is <u>HTML5</u>?</h3>
+            <p>
+                This site utilizes HTML5: a markup language used for structuring and
+                presenting content on the World Wide Web. Many people, especially
+                beginners, confuse it with a programming language, however, it is just
+                use to define the structure and content of the webpage using its various
+                markup elements. Currently, it is the most popular and supported web
+                markup language.
+            </p>
+        </section>
+        
+        <section id="list">
+            <h2>List Demonstration</h2>
+            <p>
+                Here, I will demonstrate an example of a nested list in HTML!<br>
+                Some healthy items:
+            </p>
+            <ol>
+                <li>
+                    Fish
+                    <ul>
+                        <li>Calories: 206/Energy Amount</li>
+                        <li>Nutrients: High in healthy omega 3 fatty acids</li>
+                    </ul>
+                </li>
+                <li>
+                    Broccoli
+                    <ul>
+                        <li>Calories: 0.239006/Energy Amount</li>
+                        <li>Nutrients: Rich in nutrients including glucosinolates</li>
+                    </ul>
+                </li>
+                <li>
+                    Spinach
+                    <ul>
+                        <li>Calories: 23 / 100 grams</li>
+                        <li>Nutrients: Packed with lutein and zeaxanthin</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
 
+        <section id="table" class="table-responsive">
+            <div>
+                <h3>Table Demo</h3>
+                <p class="centered-text">Here, I will create 2 HTML tables for demonstration purposes!</p>
+            </div>
+            <table class="table table-hover">
+                <caption>This table contains some movies!</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Director</th>
+                        <th>Year of Release</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Harry Potter and The Order of the Phoenix</td>
+                        <td rowspan="2">David Yates</td>
+                        <td>2007</td>
+                    </tr>
+                    <tr>
+                        <td>Harry Potter and The Half-Blood Prince</td>
+                        <td>2009</td>
+                    </tr>
+                    <tr>
+                        <td>The Lords of the Rings, the Fellowship of the Ring</td>
+                        <td>Peter Jackson</td>
+                        <td>2001</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Footer Content</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <table class="table table-hover">
+                <caption>This table contains some Youtube Channels!</caption>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Channel Owner</th>
+                        <th>Subscribers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CarryMinati</td>
+                        <td rowspan="2">Ajey Nagar</td>
+                        <td>35.9M</td>
+                    </tr>
+                    <tr>
+                        <td>CarryIsLive</td>
+                        <td>11.1M</td>
+                    </tr>
+                    <tr>
+                        <td>Programming with Mosh</td>
+                        <td>Mosh Hamedani</td>
+                        <td>2.55M</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Footer Content</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <p><em>These were some tables defined with HTML5 making use of all fundamental tags and attributes!</em></p>
+        </section>
 
+        <section id="audio" class="multimedia">
+            <h3>Audio Demo</h3>
+            <figure>
+                <figcaption>This sample audio is served using the express.static middleware which serves all staic files in the public folder.</figcaption>
+                <audio controls>
+                    <source src="/Audio/thomas.mp3" type="audio/mp3">
+                    <source src="https://scs.senecac.on.ca/~tanvir.alam/shared/fall-2018/web222/Track03.ogg" type="audio/ogg">
+                    <p><em>Your browser doesn't support HTML5 audio.</em></p>
+                </audio>
+            </figure>
+        </section>
+
+        <section id="video">
+            <h3>Video Demo</h3>
+            <figure>
+                <figcaption>Here's a sample video!</figcaption>
+                <video autoplay controls>
+                    <source src="/videos/sample.mp4" type="video/mp4">
+                    <source src="https://scs.senecac.on.ca/~tanvir.alam/shared/fall-2018/web222/movie.ogg" type="video/ogg">
+                    <p><em>Your browser doesn't support HTML5 audio.</em></p>
+                </video>
+            </figure>
+            <p><em>This sample video is served using the express.static middleware which serves all static files in the public folder.</em></p>
+        </section>
+        <br>
+        <br>
+
+        <div class="page-navigator">
+            <a id="top-button" href="#top" class="nav-control-button top-button px-2 py-1"><i class="bi bi-arrow-90deg-up"></i></a>
+            <hr class="p-0 m-0">
+            <a id="bottom-button" href="#bottom" class="nav-control-button bottom-button px-2"><i class="bi bi-arrow-90deg-down"></i></a>
+        </div>
+        <div id="bottom"></div>
 		<!-- End your code here  -->
-
 
 
 	</main>

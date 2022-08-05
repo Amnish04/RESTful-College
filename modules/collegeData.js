@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-var sequelize = new Sequelize('dfvqdutfds9q8a', 'qyxvgfdfibxyiu', 'b328ccc0b1bdd0a52892d6a7e1e87ab275059e6811059ce6fac06c9bb78cf268', {
-    host: 'ec2-44-209-186-51.compute-1.amazonaws.com',
+const sequelize = new Sequelize('d5vp1lfqo0ooi1', 'ztnvxwguilmsrm', 'c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593', {
+    host: 'ec2-3-213-228-206.compute-1.amazonaws.com',
     dialect: 'postgres',
     port: 5432,
     dialectOptions: {
@@ -9,7 +9,6 @@ var sequelize = new Sequelize('dfvqdutfds9q8a', 'qyxvgfdfibxyiu', 'b328ccc0b1bdd
     },
     query:{ raw: true }
 });
-
 
 sequelize
 .authenticate()

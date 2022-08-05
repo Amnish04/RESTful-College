@@ -60,12 +60,23 @@ app.get("/", (req,res) => {
     res.render("home");
 });
 
+app.get("/test", (req, res) => {
+    res.send(process.env.DATABASE_URL + "Testing");
+});
+
+
 app.get("/about", (req,res) => {
     res.render("about");
 });
 
 app.get("/htmlDemo", (req,res) => {
     res.render("htmlDemo");
+});
+
+app.get("/htmlDemo/:section", (req,res) => {
+    res.render("htmlDemo", {
+        section: req.params.section
+    });
 });
 
 app.get("/students", (req, res) => {
