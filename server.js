@@ -15,6 +15,8 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 const data = require("./modules/collegeData.js");
 const { rejects } = require("assert");
+const clientSessions = require("client-sessions");
+const { rmSync } = require("fs");
 
 const app = express();
 
@@ -54,16 +56,58 @@ app.use(function(req,res,next){
     next();
 });
 
+// Sample User for the app
+const user = {
+    name: "Amnish Singh",
+    username: "amnish",
+    password: "strong-password"
+};
 
+const MINUTES = 60 * 1000;
+// Establishing the user session
+app.use(clientSessions({
+    cookieName: "session",
+    secret: "long-long-secret-string",
+    duration: 10*MINUTES,
+    activeDuration: 1*MINUTES
+}));
 
-app.get("/", (req,res) => {
+/* Setting up the routes */
+// Routes could have been more organized, will take split them into different files in next project
+app.get("/", validateUser, (req,res) => {
     res.render("home");
 });
 
-app.get("/test", (req, res) => {
-    res.send(process.env.DATABASE_URL + "Testing");
+app.get("/login", (req, res) => {
+    res.render("login", {
+        layout: false
+    });
 });
 
+app.post("/login", (req, res) => {
+    // Handle Authentication
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (username === user.username && password === user.password) { // Authenticated
+        // Add the user on the session and redirect them to the dashboard page.
+        req.session.user = user;
+    
+        res.redirect("/"); // Home Route
+    } else {
+        res.render("login", {
+            error: "Invalid Username/Password. Please re-enter your credentials!",
+            layout: false
+        });
+    }
+});
+
+app.get("/logout", (req, res) => {
+    // End user session
+    req.session.reset();
+    // Back to login page 
+    res.redirect("/login");
+});
 
 app.get("/about", (req,res) => {
     res.render("about");
@@ -79,7 +123,7 @@ app.get("/htmlDemo/:section", (req,res) => {
     });
 });
 
-app.get("/students", (req, res) => {
+app.get("/students", validateUser, (req, res) => {
     if (req.query.course) {
         data.getStudentsByCourse(req.query.course).then((data) => {
             if (data.length)
@@ -101,7 +145,7 @@ app.get("/students", (req, res) => {
     }
 });
 
-app.get("/students/add", (req,res) => {
+app.get("/students/add", validateUser, (req,res) => {
     data.getCourses()
     .then((data) => {
         res.render("addStudent", {
@@ -116,13 +160,13 @@ app.get("/students/add", (req,res) => {
 });
 
 
-app.post("/students/add", (req, res) => {
+app.post("/students/add", validateUser, (req, res) => {
     data.addStudent(req.body).then(()=>{
       res.redirect("/students");
     });
 });
 
-app.get("/student/:studentNum", (req, res) => {
+app.get("/student/:studentNum", validateUser, (req, res) => {
     // initialize an empty object to store the values
     let viewData = {};
     data.getStudentByNum(req.params.studentNum).then((data) => {
@@ -155,13 +199,13 @@ app.get("/student/:studentNum", (req, res) => {
     });
 });
 
-app.post("/student/update", (req, res) => {
+app.post("/student/update", validateUser, (req, res) => {
     data.updateStudent(req.body).then(() => {
         res.redirect("/students");
     });
 });
 
-app.get("/students/delete/:studentNum", (req, res) => {
+app.get("/students/delete/:studentNum", validateUser, (req, res) => {
     data.deleteStudentByNum(req.params.studentNum)
     .then((data) => {
         res.redirect("/students");
@@ -172,7 +216,7 @@ app.get("/students/delete/:studentNum", (req, res) => {
     });
 });
 
-app.get("/courses", (req,res) => {
+app.get("/courses", validateUser, (req,res) => {
     data.getCourses().then((data)=>{
         if (data.length)
             res.render("courses", {courses: data});
@@ -183,7 +227,7 @@ app.get("/courses", (req,res) => {
     });
 });
 
-app.get("/course/:id", (req, res) => {
+app.get("/course/:id", validateUser, (req, res) => {
     data.getCourseById(req.params.id).then((data) => {
         if (data)
             res.render("course", { course: data[0] }); 
@@ -193,11 +237,11 @@ app.get("/course/:id", (req, res) => {
     });
 });
 
-app.get("/courses/add", (req, res) => {
+app.get("/courses/add", validateUser, (req, res) => {
     res.render("addCourse");
 });
 
-app.post("/courses/add", (req, res) => {
+app.post("/courses/add", validateUser, (req, res) => {
     data.addCourse(req.body).then(()=>{
         res.redirect("/courses");
     })
@@ -206,9 +250,9 @@ app.post("/courses/add", (req, res) => {
     });
 });
 
-app.post("/course/update", (req, res) => {
-    data.updateStudent(req.body).then(() => {
-        res.redirect("/students");
+app.post("/course/update", validateUser, (req, res) => {
+    data.updateCourse(req.body).then(() => {
+        res.redirect("/courses");
     })
     .catch((msg) => {
         res.render("course", {
@@ -217,7 +261,7 @@ app.post("/course/update", (req, res) => {
     });
 });
 
-app.get("/course/delete/:id", (req, res) => {
+app.get("/course/delete/:id", validateUser, (req, res) => {
     data.deleteCourseById(req.params.id)
     .then(() => {
         res.redirect("/courses");
@@ -239,3 +283,12 @@ data.initialize().then(function(){
 }).catch(function(err){
     console.log("unable to start server: " + err);
 });
+
+/* Authorization Middleware */
+function validateUser(req, res, next) {
+    if (req.session.user) {
+        next(); // Authorized, serve the content
+    } else {
+        res.redirect("/login"); // We are keeping it very simple here
+    }
+}

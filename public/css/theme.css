@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Nunito', Verdana, Geneva, Tahoma, sans-serif, sans-serif;
     font-weight: 1000;
     text-align: center;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 
 html {
@@ -267,4 +267,15 @@ audio, video {
 
 audio {
     border-radius: 1em;
-} 
+}
+
+.col img {
+    display: block;
+    height: 150px;
+    width: 80%;
+}
+
+.card-content {
+    height: 200px;
+    overflow-y: auto;
+}
