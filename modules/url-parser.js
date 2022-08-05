@@ -33,4 +33,5 @@ class CredentialParser {
         return credentials;
     }
 };
+
 module.exports.urlParser = new CredentialParser();
