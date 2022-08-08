@@ -114,7 +114,7 @@ body {
     font-family: var(--font2);
     font-size: 20px;
     margin: auto;
-    background-image: var(--background-color);
+    background-color: var(--background-color);
     min-height: 100vh;
 }
 

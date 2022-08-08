@@ -42,16 +42,31 @@
         </section>
         
         <section>
-            <div class="alert alert-secondary" role="alert">
-                <h4 class="alert-heading">Additional Info</h4>
+            <div id="announcement" class="alert alert-secondary" role="alert">
+                <h4 class="alert-heading">Additional Info
+                    <button id="stop-announcement" class="btn btn-danger mx-2">Stop</button>
+                </h4>
                 <hr>
                 {{!-- Deprecated tag but fine for the moment --}}
                 <marquee direction="right" behaviour="smooth" class="mb-0">For complete description of technologies used in this website, visit the <a href="/about">about</a> section</marquee>
+                <p direction="right" behaviour="smooth" hidden class="mb-0">For complete description of technologies used in this website, visit the <a href="/about">about</a> section</p>
             </div>
         </section>
 
 		<!-- End your code here  -->
-
+        <script>
+            document.getElementById("stop-announcement").onclick = function(event) {
+                if (this.innerHTML === "Stop") {
+                    document.querySelector("#announcement marquee").hidden = true;
+                    document.querySelector("#announcement p").hidden = false;
+                    this.innerHTML = "Resume";
+                } else {
+                    document.querySelector("#announcement marquee").hidden = false;
+                    document.querySelector("#announcement p").hidden = true;
+                    this.innerHTML = "Stop";
+                }
+            };
+        </script>
 
 
 	</main>
