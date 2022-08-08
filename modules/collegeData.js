@@ -3,7 +3,7 @@ const Parser = require("./url-parser");
 const { urlParser } = Parser;
 
 /* 
-    IMPORTANT: The hard coded version is for testing locally. It may not work all the time as postgres chnages credentials from periodically. This is why I took the time 
+    IMPORTANT: The hard coded version is for testing locally. It may not work all the time as postgres chnages credentials periodically. This is why I took the time 
                to implement a module that parses heroku config variables and creates a dynamic connection on runtime.
 */
 let credentials; // This is unsafe

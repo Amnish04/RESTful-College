@@ -1,7 +1,7 @@
 class CredentialParser {
-    constructor() { }
+    constructor() {  /* No State, Utility Class */ }
     // Helper Functions
-    extractToken(record, delimeter) {
+    #extractToken(record, delimeter) {
         let token = "", next_pos = 0;
         if (delimeter) {
             next_pos = record.indexOf(delimeter);
@@ -17,19 +17,19 @@ class CredentialParser {
         let credentials = {};
         url = url.replace("postgres://", "");
         // Extract user
-        credentials.user = this.extractToken(url, ":");
+        credentials.user = this.#extractToken(url, ":");
         url = url.replace(credentials.user + ":", "");
         // Extract password
-        credentials.password = this.extractToken(url, "@");
+        credentials.password = this.#extractToken(url, "@");
         url = url.replace(credentials.password+"@", "");
         // Extract host
-        credentials.host = this.extractToken(url, ":");
+        credentials.host = this.#extractToken(url, ":");
         url = url.replace(credentials.host+":", "");
         // Extract port
-        credentials.port = this.extractToken(url, "/");
+        credentials.port = this.#extractToken(url, "/");
         url = url.replace(credentials.port+"/", "");
         // Extract Database Name
-        credentials.database = this.extractToken(url);
+        credentials.database = this.#extractToken(url);
         return credentials;
     }
 };
