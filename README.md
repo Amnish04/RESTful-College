@@ -7,7 +7,8 @@ Please do not perform any modfications to the exisitng data on website. You can 
 ### Link to the website: 
 ***https://aqueous-island-28107.herokuapp.com/***
 
-*Credendtials* -> Username: amnish
-                  Password: strong-password
+*Credendtials* -> 
+**Username:** amnish
+**Password:** strong-password
 
 #### I will be adding a new association between users and rest of the data so a particular administrator can only view and work with data that is meant for him!
