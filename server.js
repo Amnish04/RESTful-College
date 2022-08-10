@@ -1,15 +1,3 @@
-/*********************************************************************************
-* WEB322 – Assignment 06
-* I declare that this assignment is my own work in accordance with Seneca Academic Policy. No part of this
-* assignment has been copied manually or electronically from any other source (including web sites) or
-* distributed to other students.
-*
-* Name: Amnish Singh Arora Student ID: 120097217 Date: 5th July 2022
-*
-* Online (Heroku) Link: https://aqueous-island-28107.herokuapp.com/
-*
-********************************************************************************/
-
 const express = require("express");
 const path = require("path");
 const exphbs = require("express-handlebars");
