@@ -12,6 +12,7 @@ class CredentialParser {
         }
         return token;
     }
+    
     // Driver Function
     parseDatabaseUrl(url) {
         let credentials = {};

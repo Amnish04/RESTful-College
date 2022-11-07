@@ -28,9 +28,7 @@ function setupGoToTopButton() {
         timeout = setTimeout(() => {
             button.style.display = "none";
         }, 1000*2);
-    });
-
-    
+    });    
 }
 
 function scrollToSection() {

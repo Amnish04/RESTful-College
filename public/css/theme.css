@@ -197,9 +197,10 @@ footer a:focus {
     display: block;
     background-color: black;
     color: white;
-    transition: 200ms ease-in-out;
     padding-left: 0.25em;
+    transition: 200ms ease-in-out;
 }
+
 .top-button {
     border-top-left-radius: 25%;
     border-top-right-radius: 25%;
