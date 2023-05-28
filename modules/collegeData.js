@@ -16,6 +16,7 @@ try {
 catch(err) {
     credentials = urlParser.parseDatabaseUrl("postgres://collegedb_user:XELBI8rEXI141sHFlv0foAu89uOlO3az@dpg-cdkp8k5a49999psf9qbg-a.oregon-postgres.render.com:5432/collegedb");
 }
+console.log(credentials);
 // OLD DATABASE_URL --> postgres://ztnvxwguilmsrm:c5cf1a766f90ece5bd0e9443c80bc5579a864418515cca1ccc1b3bc5175bf593@ec2-3-213-228-206.compute-1.amazonaws.com:5432/d5vp1lfqo0ooi1
 
 const sequelize = new Sequelize(credentials.database, credentials.user, credentials.password, {
