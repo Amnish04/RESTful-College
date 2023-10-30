@@ -5,7 +5,7 @@ A full-stack website that allows the user to perform all types of CRUD operation
 Please do not perform any modfications to the exisitng data on website. You can add your own and play around with it.
 
 ### Link to the website: 
-***https://aqueous-island-28107.herokuapp.com/***
+https://restful-college.onrender.com/
 
 *Credendtials* -> 
 **Username:** amnish
